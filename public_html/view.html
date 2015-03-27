@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>RobAir cmd</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/jquery-ui.theme.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/jquery.sidr.light.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body onresize="init_size();">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3>Vue Web Cam</h3>
+                            <div class="div_resizabled" id="div_cam1">
+                                <img src="img/visio2.png" alt=""/>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <h3>Cam Assistance</h3>
+                            <div id="div_cam2" class="div_resizabled">
+                                <img src="img/esacalier.JPG" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3>Cam principale</h3>
+                            <div id="div_cam3" class="div_resizabled">
+                                <img id="camP" src="img/visio.jpg" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3>Info Board et Batterie Board</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="divBB" class="col-sm-12">
+                            <h3>BandWith Board</h3>
+                            <p>ERROR SYSTEM</p>
+                            <a href="index.html"> Connection </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3>Touch Pad</h3>
+                            <div id="div_touchpad" class="div_resizabled">
+                                <img src="img/Touchpad.jpg" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        
+        <script src="js/bootstrap.js" type="text/javascript"></script>
+        <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+        <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="js/fnResize.js" type="text/javascript"></script>
+
+        <script>
+            $(function () {
+                $(".div_resizabled").resizable();
+                init_size();
+            });
+        </script>
+    </body>
+</html>

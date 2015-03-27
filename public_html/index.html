@@ -1,84 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
-        <title>RobAir cmd</title>
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!--<link rel="icon" href="favicon.ico">-->
 
-        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/jquery-ui.theme.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/jquery.sidr.light.css" rel="stylesheet" type="text/css"/>
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <title>RobAir</title>
 
-        <script src="js/bootstrap.js" type="text/javascript"></script>
-        <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
-        <script src="js/jquery-ui.min.js" type="text/javascript"></script>
-        <script src="js/fnResize.js" type="text/javascript"></script>
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
 
-        <script>
-            $(function () {
-                $(".div_resizabled").resizable();
-                init_size();
-            });
-        </script>
+        <!-- Custom styles for this template -->
+        <link href="css/cover.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          <![endif]-->
     </head>
-    <body onresize="init_size();">
 
+    <body>
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-8">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3>Vue Web Cam</h3>
-                            <div class="div_resizabled" id="div_cam1">
-                                <img src="img/visio2.png" alt=""/>
-                            </div>
+            <div class="inner cover">
+                <div id="connect">
+                    <h1 class="cover-heading">Enter below the robot IP to connect to</h1>
+                    <form action="#" id="connect-form">
+                        <div class="form-horizontal form-group form-group-lg">
+                            <input type="text" class="form-control" id="connect-ip" placeholder="127.0.0.1:9090">
                         </div>
-                        <div class="col-sm-6">
-                            <h3>Cam Assistance</h3>
-                            <div id="div_cam2" class="div_resizabled">
-                                <img src="img/esacalier.JPG" alt=""/>
-                            </div>
+                        <div class="checkbox">
+                            <label>
+                                <input id="connect-remember" type="checkbox">Remember IP
+                            </label>
+                        </div>
+                        <p class="lead">
+                            <input id="connect-btn" type="submit" class="btn btn-lg btn-default" data-loading-text="Connecting..." value="Connect">
+                        </p>
+                    </form>
+                </div>
+            </div>
+            <div id="remote" class="inner" style="display: none">
+                <div id="remote-screen" class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                    <!--<img class="img-responsive" src="img/cat5.jpg" style="width: 100%" />-->
+                    <!--<img class="img-responsive" id="remote-img" src="img/loading.gif" data-uri="/stream?topic=/camera/rgb/image_rect_color" />-->
+                    <img class="img-responsive" id="remote-img" src="img/loading.gif" data-uri="/stream?topic=/usb_cam_front/image_raw" />
+                </div>
+                <p class="visible-xs-block col-xs-12"></p>
+                <div id="remote-controls" class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                    <div class="row">
+                        <p class="col-xs-12 hidden-xs" style="min-height: 5em"></p>
+                        <div class="col-xs-4">
+                        </div>
+                        <div class="col-xs-4">
+                            <button type="button" id="remote-up" class="remote-direction btn btn-block btn-default btn-lg">
+                                <span class="glyphicon glyphicon-arrow-up"></span>
+                            </button>
+                        </div>
+                        <div class="col-xs-4">
                         </div>
                     </div>
+                    <p class="col-xs-12"></p>
                     <div class="row">
-                        <div class="col-sm-12">
-                            <h3>Cam principale</h3>
-                            <div id="div_cam3" class="div_resizabled">
-                                <img id="camP" src="img/visio.jpg" alt=""/>
-                            </div>
+                        <div class="col-xs-4">
+                            <button type="button" id="remote-left" class="remote-direction btn btn-block btn-default btn-lg">
+                                <span class="glyphicon glyphicon-arrow-left"></span>
+                            </button>
+                        </div>
+                        <div class="col-xs-4">
+                            <button type="button" id="remote-stop" class="remote-direction btn btn-block btn-primary btn-lg">
+                                <span class="glyphicon glyphicon-pause"></span>
+                            </button>
+                        </div>
+                        <div class="col-xs-4">
+                            <button type="button" id="remote-right" class="remote-direction btn btn-block btn-default btn-lg">
+                                <span class="glyphicon glyphicon-arrow-right"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="col-xs-12"></p>
+                    <div class="row">
+                        <div class="col-xs-4">
+                        </div>
+                        <div class="col-xs-4">
+                            <button type="button" id="remote-down" class="remote-direction btn btn-block btn-default btn-lg">
+                                <span class="glyphicon glyphicon-arrow-down"></span>
+                            </button>
+                        </div>
+                        <div class="col-xs-4">
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h3>Info Board et Batterie Board</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div id="divBB" class="col-sm-12">
-                            <h3>BandWith Board</h3>
-                            <p>ERROR SYSTEM</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h3>Touch Pad</h3>
-                            <div id="div_touchpad" class="div_resizabled">
-                                <img src="img/Touchpad.jpg" alt=""/>
-                            </div>
-                        </div>
-                    </div>
+                <div id="remote-controls-mouse" class="col-xs-12 col-sm-4 col-md-3 col-lg-2" style="background-color:#FFCC00; height:200px;">
 
                 </div>
             </div>
+            <div style="font-size: 50px;">
+                <a href="view.html" style="color: red;"> View (pour voir la vue après connection)</a>
+            </div>
         </div>
 
+        <!-- Bootstrap core JavaScript
+            ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+
+
+        <script src="lib/jquery.bootstrap-growl.min.js"></script>
+        <script src="lib/eventemitter2.min.js"></script>
+        <script src="lib/roslib.min.js"></script>
+
+
+        <!--<script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>-->
+        <!--<script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>-->
+
+
+        <script src="js/app.js"></script>
     </body>
+
 </html>
